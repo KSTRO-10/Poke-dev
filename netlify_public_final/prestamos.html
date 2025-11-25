@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Préstamos - PokeDev</title>
+    <link rel="stylesheet" href="#">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="pokeball">⚪</span>
+                <h1>PokeDev</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Libros</a></li>
+                <li><a href="#">Usuarios</a></li>
+                <li><a href="#" class="active">Préstamos</a></li>
+                <li><a href="#">Buscar</a></li>
+                <li><a href="#">Estadísticas</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        
+            
+                
+                    <div class="alert alert-<span id="category"></span>"><span id="message"></span></div>
+                
+            
+        
+
+        <div class="page-header">
+            <h2>📖 Préstamos Activos</h2>
+            <a href="#" class="btn btn-primary">➕ Realizar Préstamo</a>
+        </div>
+
+        
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Usuario</th>
+                        <th>Libro</th>
+                        <th>Fecha Préstamo</th>
+                        <th>Fecha Devolución</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td><span id="id_prestamo"></span></td>
+                        <td><span id="usuarios_prestamo_id_usuario__nombre"></span></td>
+                        <td><span id="libros_prestamo_id_libro__titulo"></span></td>
+                        <td><span id="prestamo_fecha_prestamo_strftime___d__m__Y__"></span></td>
+                        <td><span id="prestamo_fecha_devolucion_strftime___d__m__Y__"></span></td>
+                        <td>
+                            <a href="#" 
+                               class="btn btn-sm btn-success">↩️ Devolver</a>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="empty-state">
+            <p>📭 No hay préstamos activos en este momento</p>
+            <a href="#" class="btn btn-primary">Realizar Primer Préstamo</a>
+        </div>
+        
+    </div>
+
+    <footer>
+        <p>&copy; 2025 PokeDev - Sistema de Biblioteca</p>
+    </footer>
+<script src="static/js/local_app.js"></script>
+</body>
+</html>

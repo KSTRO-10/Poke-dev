@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios - PokeDev</title>
+    <link rel="stylesheet" href="#">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="pokeball">⚪</span>
+                <h1>PokeDev</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Libros</a></li>
+                <li><a href="#" class="active">Usuarios</a></li>
+                <li><a href="#">Préstamos</a></li>
+                <li><a href="#">Buscar</a></li>
+                <li><a href="#">Estadísticas</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        
+            
+                
+                    <div class="alert alert-<span id="category"></span>"><span id="message"></span></div>
+                
+            
+        
+
+        <div class="page-header">
+            <h2>👥 Usuarios Registrados</h2>
+            <a href="#" class="btn btn-primary">➕ Agregar Usuario</a>
+        </div>
+
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Libros Prestados</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td><span id="id"></span></td>
+                        <td><span id="usuario_nombre"></span></td>
+                        <td><span id="usuario_email"></span></td>
+                        <td>
+                            <span class="badge badge-info"><span id="usuario_libros_prestados_length"></span></span>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 PokeDev - Sistema de Biblioteca</p>
+    </footer>
+<script src="static/js/local_app.js"></script>
+</body>
+</html>

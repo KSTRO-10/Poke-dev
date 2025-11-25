@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Préstamos - PokeDev</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="pokeball">⚪</span>
+                <h1>PokeDev</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                <li><a href="{{ url_for('listar_libros') }}">Libros</a></li>
+                <li><a href="{{ url_for('listar_usuarios') }}">Usuarios</a></li>
+                <li><a href="{{ url_for('listar_prestamos') }}" class="active">Préstamos</a></li>
+                <li><a href="{{ url_for('buscar') }}">Buscar</a></li>
+                <li><a href="{{ url_for('estadisticas') }}">Estadísticas</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="page-header">
+            <h2>📖 Préstamos Activos</h2>
+            <a href="{{ url_for('realizar_prestamo') }}" class="btn btn-primary">➕ Realizar Préstamo</a>
+        </div>
+
+        {% if prestamos %}
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Usuario</th>
+                        <th>Libro</th>
+                        <th>Fecha Préstamo</th>
+                        <th>Fecha Devolución</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for id_prestamo, prestamo in prestamos.items() %}
+                    <tr>
+                        <td>{{ id_prestamo }}</td>
+                        <td>{{ usuarios[prestamo.id_usuario].nombre }}</td>
+                        <td>{{ libros[prestamo.id_libro].titulo }}</td>
+                        <td>{{ prestamo.fecha_prestamo.strftime('%d/%m/%Y') }}</td>
+                        <td>{{ prestamo.fecha_devolucion.strftime('%d/%m/%Y') }}</td>
+                        <td>
+                            <a href="{{ url_for('devolver_libro', id_prestamo=id_prestamo) }}" 
+                               class="btn btn-sm btn-success">↩️ Devolver</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <p>📭 No hay préstamos activos en este momento</p>
+            <a href="{{ url_for('realizar_prestamo') }}" class="btn btn-primary">Realizar Primer Préstamo</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <footer>
+        <p>&copy; 2025 PokeDev - Sistema de Biblioteca</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realizar Préstamo - PokeDev</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="pokeball">⚪</span>
+                <h1>PokeDev</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                <li><a href="{{ url_for('listar_libros') }}">Libros</a></li>
+                <li><a href="{{ url_for('listar_usuarios') }}">Usuarios</a></li>
+                <li><a href="{{ url_for('listar_prestamos') }}" class="active">Préstamos</a></li>
+                <li><a href="{{ url_for('buscar') }}">Buscar</a></li>
+                <li><a href="{{ url_for('estadisticas') }}">Estadísticas</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <div class="page-header">
+            <h2>📤 Realizar Nuevo Préstamo</h2>
+        </div>
+
+        <div class="form-container">
+            <form method="POST" class="form">
+                <div class="form-group">
+                    <label for="usuario">Seleccionar Usuario</label>
+                    <select id="usuario" name="usuario" required>
+                        <option value="">-- Seleccione un usuario --</option>
+                        {% for id, usuario in usuarios.items() %}
+                        <option value="{{ id }}">{{ usuario.nombre }} ({{ usuario.email }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="libro">Seleccionar Libro</label>
+                    <select id="libro" name="libro" required>
+                        <option value="">-- Seleccione un libro --</option>
+                        {% for id, libro in libros.items() %}
+                            {% if id in libros_disponibles %}
+                            <option value="{{ id }}">{{ libro.titulo }} - {{ libro.autor }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="info-box">
+                    <p>ℹ️ El préstamo tendrá una duración de 14 días</p>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-primary">Realizar Préstamo</button>
+                    <a href="{{ url_for('listar_prestamos') }}" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 PokeDev - Sistema de Biblioteca</p>
+    </footer>
+</body>
+</html>
